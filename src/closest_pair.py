@@ -24,8 +24,14 @@ def ordena_jogadores_por_y(jogadores: list[Jogador]) -> list[Jogador]:
         key=lambda jogador: (jogador.y, jogador.x, jogador.id),
     )
 
-def encontra_par_mais_proximo(jogadores: list[Jogador]) -> ClosestPair:
-    return
+def encontra_closest_pair(jogadores: list[Jogador]) -> ClosestPair:
+    if len(jogadores) < 2:
+        raise ValueError("Necessário pelo menos dois jogadores")
+
+    jogadores_por_x = ordena_jogadores_por_x(jogadores)
+    jogadores_por_y = ordena_jogadores_por_y(jogadores)
+
+    return closest_pair_recursivo(jogadores_por_x, jogadores_por_y)
 
 def closest_pair_caso_base(jogadores: list[Jogador]) -> ClosestPair:
     jogador1 = jogadores[0]
@@ -94,7 +100,7 @@ def closest_pair_recursivo(
 
 def closest_pair_faixa(
     jogadores_faixa: list[Jogador],
-    resultado: ClosestPair,
+    melhor_resultado: ClosestPair,
 ) -> ClosestPair:
     for primeiro in range(len(jogadores_faixa)):
         limite = min(primeiro + 8, len(jogadores_faixa))
@@ -103,16 +109,16 @@ def closest_pair_faixa(
             jogador1 = jogadores_faixa[primeiro]
             jogador2 = jogadores_faixa[segundo]
 
-            if jogador2.y - jogador1.y >= resultado.distancia:
+            if jogador2.y - jogador1.y >= melhor_resultado.distancia:
                 break
 
             distancia = calcula_distancia_euclidiana(jogador1, jogador2)
 
-            if distancia < resultado.distancia:
-                resultado = ClosestPair(
+            if distancia < melhor_resultado.distancia:
+                melhor_resultado = ClosestPair(
                     jogador1=jogador1,
                     jogador2=jogador2,
                     distancia=distancia,
                 )
 
-    return resultado
+    return melhor_resultado
