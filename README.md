@@ -80,9 +80,40 @@ O espaço auxiliar utilizado pelas listas ordenadas e pelas divisões é `O(n)`.
 
 ## Screenshots
 
-As capturas da versão final da interface serão adicionadas nesta seção.
+### Cenário 1
 
-## [Clique aqui para assistir à apresentação]()
+Este cenário utiliza poucos jogadores para facilitar a visualização das posições.
+
+- **Quantidade de jogadores:** 6;
+- **Par mais próximo:** jogadores 3 e 4;
+- **Distância:** 80,99;
+- **Região do resultado:** uma das metades.
+
+![Resultado com 6 jogadores](./assets/exemplo-6-jogadores.png)
+
+### Cenário 2
+
+Com 40 jogadores, o mapa possui mais pontos e mais divisões recursivas. 
+
+- **Quantidade de jogadores:** 40;
+- **Par mais próximo:** jogadores 35 e 33;
+- **Distância:** 18,18;
+- **Região do resultado:** uma das metades.
+
+![Resultado com 40 jogadores](./assets/exemplo-40-jogadores.png)
+
+### Cenário 3: 70 jogadores
+
+Este cenário apresenta uma quantidade maior de jogadores e demonstra a importância da faixa central.
+
+- **Quantidade de jogadores:** 70;
+- **Par mais próximo:** jogadores 66 e 27;
+- **Distância:** 11,55;
+- **Região do resultado:** faixa central, atravessando a divisão.
+
+![Resultado com 70 jogadores](./assets/exemplo-70-jogadores.png)
+
+## [Clique aqui para assistir à apresentação](https://youtu.be/EoSLwD-H_dw)
 
 ## Instalação
 
